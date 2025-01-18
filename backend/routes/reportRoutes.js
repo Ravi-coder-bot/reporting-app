@@ -20,24 +20,35 @@ const upload = multer({ storage });
 // Report submission route
 router.post('/submit', upload.single('image'), async (req, res) => {
     try {
-        const { userId, description, latitude, longitude } = req.body;
+        console.log('Received Request:', req.body);
+        console.log('File:', req.file);
 
-        // Save report to the database
+        const { description, latitude, longitude } = req.body;
+
+        if (!description || !latitude || !longitude) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+        if (!req.file) {
+            return res.status(400).json({ error: 'Image upload failed' });
+        }
+
         const report = new Report({
-            userId,
             description,
             image: req.file.filename,
             location: {
-                latitude,
-                longitude,
-            },
+                latitude: parseFloat(latitude),
+                longitude: parseFloat(longitude),
+            }
         });
 
         await report.save();
-        res.status(201).json({ message: 'Report submitted successfully' });
+        res.status(201).json({ message: 'Report submitted successfully', report });
+
     } catch (err) {
-        res.status(500).json({ error: 'Failed to submit report' });
+        console.error('Error saving report:', err);
+        res.status(500).json({ error: err.message });
     }
 });
+
 
 module.exports = router;
