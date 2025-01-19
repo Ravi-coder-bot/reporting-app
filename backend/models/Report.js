@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
 const reportSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     description: { type: String, required: true },
-    location: { type: String, required: true },
-    image: { type: String },
-    status: { type: String, enum: ['Pending', 'Under Review', 'Resolved'], default: 'Pending' },
-}, { timestamps: true });
+    image: { type: String, required: true },
+    location: {
+        latitude: { type: Number, required: true },
+        longitude: { type: Number, required: true }
+    }
+}, { timestamps: true });  // This automatically adds createdAt & updatedAt
 
 module.exports = mongoose.model('Report', reportSchema);

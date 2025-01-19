@@ -55,8 +55,9 @@ function ReportSubmission() {
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="w-full px-4 py-2 border rounded"
+                        className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                         rows="4"
+                        placeholder="Enter a brief description of the report..."
                         required
                     />
                 </div>
@@ -65,14 +66,14 @@ function ReportSubmission() {
                     <div
                         {...getRootProps({
                             className:
-                                'border-dashed border-2 border-gray-300 p-4 rounded text-center cursor-pointer',
+                                'border-dashed border-2 border-gray-300 p-4 rounded text-center cursor-pointer hover:border-green-500 transition duration-200',
                         })}
                     >
                         <input {...getInputProps()} />
                         {image ? (
-                            <p>{image.name}</p>
+                            <p className="text-gray-700">{image.name}</p>
                         ) : (
-                            <p>Drag & drop an image, or click to select</p>
+                            <p className="text-gray-500">Drag & drop an image, or click to select</p>
                         )}
                     </div>
                 </div>
@@ -92,7 +93,7 @@ function ReportSubmission() {
                 </div>
                 <button
                     type="submit"
-                    className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+                    className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition duration-200"
                 >
                     Submit Report
                 </button>

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { CtaButton } from "@/components/ui/cta-button";
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -61,6 +63,14 @@ function Login() {
                     </span>
                 </p>
             </form>
+            <motion.div
+             className="flex"
+             initial={{ y: 10, opacity: 0 }}
+             animate={{ y: 0.4, opacity: 1 }}
+             transition={{ duration: 0.4, delay: 0.4 }}
+            >
+                <CtaButton text="Get Started" to="/signup" />
+            </motion.div>
         </div>
     );
 }
