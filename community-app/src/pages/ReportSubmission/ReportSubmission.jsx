@@ -48,37 +48,37 @@ function ReportSubmission() {
     };
 
     return (
-        <div className="report-container">
-            <h2 className="report-title">Submit a Report</h2>
+        <div className="report-form-container">
+            <h2 className="report-form-title">Submit a Report</h2>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label className="form-label">Description</label>
+                <div className="input-group">
+                    <label className="input-label">Description</label>
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="form-input"
+                        className="input-textarea"
                         rows="4"
                         placeholder="Enter a brief description of the report..."
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label className="form-label">Upload Image</label>
+                <div className="input-group">
+                    <label className="input-label">Upload Image</label>
                     <div
                         {...getRootProps({
-                            className: 'dropzone',
+                            className: 'upload-zone',
                         })}
                     >
                         <input {...getInputProps()} />
                         {image ? (
-                            <p className="text">{image.name}</p>
+                            <p className="file-name">{image.name}</p>
                         ) : (
-                            <p className="text">Drag & drop an image, or click to select</p>
+                            <p className="file-placeholder">Drag & drop an image, or click to select</p>
                         )}
                     </div>
                 </div>
-                <div className="form-group">
-                    <label className="form-label">Select Location</label>
+                <div className="input-group">
+                    <label className="input-label">Select Location</label>
                     <MapContainer
                         center={[location.lat, location.lng]}
                         zoom={13}
@@ -93,7 +93,7 @@ function ReportSubmission() {
                 </div>
                 <button
                     type="submit"
-                    className="submit-button"
+                    className="submit-btn"
                 >
                     Submit Report
                 </button>
