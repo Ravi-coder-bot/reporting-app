@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { CtaButton } from "@/components/ui/cta-button";
+import './Login.css';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -24,52 +24,54 @@ function Login() {
     };
 
     return (
-        <div className="w-full max-w-md bg-white p-6 rounded shadow">
-            <h2 className="text-2xl font-bold mb-6">Login</h2>
+        <div className="login-container">
+            <h2 className="login-title">Login</h2>
             <form onSubmit={handleLogin}>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Email</label>
+                <div className="form-group">
+                    <label className="form-label">Email</label>
                     <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-2 border rounded"
+                        className="form-input"
                         required
                     />
                 </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Password</label>
+                <div className="form-group">
+                    <label className="form-label">Password</label>
                     <input
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-4 py-2 border rounded"
+                        className="form-input"
                         required
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-                >
+                <button type="submit" className="login-button">
                     Login
                 </button>
-                <p className="text-sm text-center mt-4">
+                <p className="signup-text">
                     Don't have an account?{' '}
                     <span
                         onClick={() => navigate('/signup')}
-                        className="text-blue-500 cursor-pointer"
+                        className="signup-link"
                     >
                         Sign up
                     </span>
                 </p>
             </form>
             <motion.div
-             className="flex"
-             initial={{ y: 10, opacity: 0 }}
-             animate={{ y: 0.4, opacity: 1 }}
-             transition={{ duration: 0.4, delay: 0.4 }}
+                className="cta-container"
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
             >
-                <CtaButton text="Get Started" to="/signup" />
+                <button
+                    className="cta-button"
+                    onClick={() => navigate('/signup')}
+                >
+                    Get Started
+                </button>
             </motion.div>
         </div>
     );

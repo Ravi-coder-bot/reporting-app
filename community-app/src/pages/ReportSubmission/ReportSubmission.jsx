@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
+import './ReportSubmission.css';
 
 function ReportSubmission() {
     const [description, setDescription] = useState('');
@@ -47,38 +48,37 @@ function ReportSubmission() {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto p-6 bg-white rounded shadow">
-            <h2 className="text-2xl font-bold mb-6">Submit a Report</h2>
+        <div className="report-container">
+            <h2 className="report-title">Submit a Report</h2>
             <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Description</label>
+                <div className="form-group">
+                    <label className="form-label">Description</label>
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="form-input"
                         rows="4"
                         placeholder="Enter a brief description of the report..."
                         required
                     />
                 </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Upload Image</label>
+                <div className="form-group">
+                    <label className="form-label">Upload Image</label>
                     <div
                         {...getRootProps({
-                            className:
-                                'border-dashed border-2 border-gray-300 p-4 rounded text-center cursor-pointer hover:border-green-500 transition duration-200',
+                            className: 'dropzone',
                         })}
                     >
                         <input {...getInputProps()} />
                         {image ? (
-                            <p className="text-gray-700">{image.name}</p>
+                            <p className="text">{image.name}</p>
                         ) : (
-                            <p className="text-gray-500">Drag & drop an image, or click to select</p>
+                            <p className="text">Drag & drop an image, or click to select</p>
                         )}
                     </div>
                 </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Select Location</label>
+                <div className="form-group">
+                    <label className="form-label">Select Location</label>
                     <MapContainer
                         center={[location.lat, location.lng]}
                         zoom={13}
@@ -93,7 +93,7 @@ function ReportSubmission() {
                 </div>
                 <button
                     type="submit"
-                    className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition duration-200"
+                    className="submit-button"
                 >
                     Submit Report
                 </button>

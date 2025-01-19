@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './Signup.css';
 
 function Signup() {
     const [name, setName] = useState('');
@@ -17,57 +18,54 @@ function Signup() {
                 password,
             });
             alert(response.data.message);
-            navigate('/');
+            navigate('/login');
         } catch (err) {
             alert(err.response?.data?.error || 'Something went wrong!');
         }
     };
 
     return (
-        <div className="w-full max-w-md bg-white p-6 rounded shadow">
-            <h2 className="text-2xl font-bold mb-6">Sign Up</h2>
-            <form onSubmit={handleSignup}>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Name</label>
+        <div className="signup-container">
+            <h2 className="signup-title">Sign Up</h2>
+            <form onSubmit={handleSignup} className="signup-form">
+                <div className="form-group">
+                    <label className="form-label">Name</label>
                     <input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full px-4 py-2 border rounded"
+                        className="form-input"
                         required
                     />
                 </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Email</label>
+                <div className="form-group">
+                    <label className="form-label">Email</label>
                     <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-2 border rounded"
+                        className="form-input"
                         required
                     />
                 </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Password</label>
+                <div className="form-group">
+                    <label className="form-label">Password</label>
                     <input
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-4 py-2 border rounded"
+                        className="form-input"
                         required
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-                >
+                <button type="submit" className="signup-button">
                     Sign Up
                 </button>
-                <p className="text-sm text-center mt-4">
+                <p className="signup-text">
                     Already have an account?{' '}
                     <span
-                        onClick={() => navigate('/')}
-                        className="text-blue-500 cursor-pointer"
+                        onClick={() => navigate('/login')}
+                        className="signup-link"
                     >
                         Login
                     </span>
