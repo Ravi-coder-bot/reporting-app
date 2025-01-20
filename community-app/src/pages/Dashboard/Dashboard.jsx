@@ -41,6 +41,7 @@ function Dashboard() {
         <Navbar />
     <div className="dashboard-container">
         <button className='nav-sign dash-report' onClick={() => navigate('/report')}>Report Your Area</button>
+        <button className='nav-sign dash-admin' onClick={() => navigate('/admin')}>Admin Pannel</button>
             <h2 className="dashboard-title">Dashboard</h2>
             <MapContainer
                 center={[28.7041, 77.1025]} // Default: Delhi

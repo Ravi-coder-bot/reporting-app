@@ -1,5 +1,6 @@
 const userRoutes = require('./routes/userRoutes');
 const reportRoutes = require('./routes/reportRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const multer = require('multer');
 const path = require('path');
@@ -25,6 +26,7 @@ app.get('/', (req,res)=>{
 app.use('/api/users', userRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/uploads', express.static('uploads'));
+app.use('/api/admin', adminRoutes);
 
 
 const PORT = process.env.PORT || 5000

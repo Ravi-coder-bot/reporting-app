@@ -4,6 +4,7 @@ import Signup from './pages/Signup/Signup';
 import ReportSubmission from './pages/ReportSubmission/ReportSubmission';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard/Dashboard';
+import AdminPanel from './pages/AdminPanel/AdminPanel';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/report" element={<ReportSubmission />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/admin" element={<AdminPanel />} />
       </Routes>
     </div>
   );

@@ -16,6 +16,7 @@ const Navbar = () => {
             <li className='nav-item'>Services</li>
             <li className='nav-item'>Tips</li>
             <li className='nav-item'>Contact us</li>
+            <li onClick={()=>navigate('/admin')} className='nav-item'>Admin Pannel</li>
             <li onClick={handleGetStarted} className='nav-item'>
               <button className='nav-sign'>
                 Sign in
