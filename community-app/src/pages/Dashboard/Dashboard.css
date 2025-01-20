@@ -1,0 +1,64 @@
+/* Container for the entire dashboard */
+.dashboard-container {
+    width: 100%;
+    max-width: 1050px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title of the dashboard */
+.dashboard-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 1rem;
+}
+
+/* Map styling */
+.dashboard-map {
+    height: 500px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Popup content styling */
+.popup-content {
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+}
+
+/* Popup title */
+.popup-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Popup image */
+.popup-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Popup status */
+.popup-status {
+    font-size: 13px;
+    margin-top: 10px;
+    color: #666;
+}
+.dashboard{
+    background-color: #4a4646;
+}
+.dash-report{
+    margin-left: 27rem;
+    margin-top: 1rem;
+}

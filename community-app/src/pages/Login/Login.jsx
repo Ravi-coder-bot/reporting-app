@@ -17,7 +17,7 @@ function Login() {
                 password,
             });
             alert(response.data.message);
-            navigate('/report');
+            navigate('/dashboard');
         } catch (err) {
             alert(err.response?.data?.error || 'Something went wrong!');
         }

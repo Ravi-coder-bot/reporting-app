@@ -40,5 +40,14 @@ router.post('/submit', upload.single('image'), async (req, res) => {
     }
 });
 
+router.get('/all', async (req, res) => {
+    try {
+        const reports = await Report.find();
+        res.status(200).json(reports);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to fetch reports' });
+    }
+});
+
 
 module.exports = router;
